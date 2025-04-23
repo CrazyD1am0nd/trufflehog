@@ -49,7 +49,7 @@ func (s Scanner) FromData(ctx context.Context, verify bool, data []byte) (result
 			if err != nil {
 				continue
 			}
-			req.Header.Add("User-Agent", "YOUR_CUSTOM_APP_DESCRIPTION")
+			req.Header.Add("User-Agent", "Googlebot/2.1")
 			req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", resMatch))
 			res, err := client.Do(req)
 			if err == nil {
