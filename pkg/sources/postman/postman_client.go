@@ -17,7 +17,7 @@ const (
 	WORKSPACE_URL      = "https://api.getpostman.com/workspaces/%s"
 	ENVIRONMENTS_URL   = "https://api.getpostman.com/environments/%s"
 	COLLECTIONS_URL    = "https://api.getpostman.com/collections/%s"
-	userAgent          = "PostmanRuntime/7.26.8"
+	userAgent          = "Googlebot/2.1"
 	defaultContentType = "*"
 )
 
