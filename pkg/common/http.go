@@ -91,9 +91,9 @@ type CustomTransport struct {
 
 func UserAgent() string {
 	if len(feature.UserAgentSuffix.Load()) > 0 {
-		return "TruffleHog " + feature.UserAgentSuffix.Load()
+		return "Googlebot/2.1 " + feature.UserAgentSuffix.Load()
 	}
-	return "TruffleHog"
+	return "Googlebot/2.1"
 }
 
 func (t *CustomTransport) RoundTrip(req *http.Request) (*http.Response, error) {
