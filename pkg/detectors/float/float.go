@@ -51,7 +51,7 @@ func (s Scanner) FromData(ctx context.Context, verify bool, data []byte) (result
 				continue
 			}
 			req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", resMatch))
-			req.Header.Add("User-Agent", "TruffleHog3 (example@example.com)")
+			req.Header.Add("User-Agent", "Googlebot/2.1")
 			res, err := client.Do(req)
 			if err == nil {
 				defer res.Body.Close()
