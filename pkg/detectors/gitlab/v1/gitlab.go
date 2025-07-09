@@ -33,7 +33,7 @@ func (Scanner) CloudEndpoint() string { return "https://gitlab.com" }
 
 var (
 	defaultClient = common.SaneHttpClient()
-	keyPat        = regexp.MustCompile(detectors.PrefixRegex([]string{"gitlab"}) + `\b([a-zA-Z0-9\-=_]{20,22})\b`)
+	keyPat        = regexp.MustCompile(detectors.PrefixRegex([]string{"gitlab"}) + `\b([a-zA-Z0-9][a-zA-Z0-9\-=_]{19,21})\b`)
 
 	BlockedUserMessage = "403 Forbidden - Your account has been blocked"
 )
@@ -55,6 +55,11 @@ func (s Scanner) FromData(ctx context.Context, verify bool, data []byte) (result
 			continue
 		}
 		resMatch := strings.TrimSpace(match[1])
+
+		// to avoid false positives
+		if detectors.StringShannonEntropy(resMatch) < 3.6 {
+			continue
+		}
 
 		s1 := detectors.Result{
 			DetectorType: detectorspb.DetectorType_Gitlab,
